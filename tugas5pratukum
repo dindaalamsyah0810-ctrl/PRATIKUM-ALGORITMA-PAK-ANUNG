@@ -1,0 +1,43 @@
+#Dinda Rahmdanty Alamsyah
+#065002500028
+
+def hitung_harga_tiket(umur):
+    if umur <= 2: return 0.00
+    elif umur >= 65: return 18.00
+    elif 3 <= umur <= 12: return 14.00
+    else: return 23.00
+
+running_total = 0.00
+
+while True:
+    input_umur = input("masukkan umur: ")
+    if not input_umur: 
+        break
+    
+    try:
+        umur = int(input_umur)
+        harga = hitung_harga_tiket(umur)
+        
+        if harga == 0.00:
+            print("Gratis")
+        else:
+            print(f"Harga ${harga:.2f}")
+            
+        running_total += harga
+        print(f"Running total: {running_total:.2f}")
+        
+    except ValueError:
+        print("Input tidak valid.")
+        continue 
+while True:
+    input_uang = input("masukkan jumlah uang: ")
+    try:
+        uang_dibayar = float(input_uang)
+        if uang_dibayar >= running_total:
+            kembalian = uang_dibayar - running_total
+            print(f"Running kembalian: {kembalian:.2f}")
+            break
+        else:
+            print(f"Uang kurang. Total: ${running_total:.2f}")
+    except ValueError:
+        print("Input jumlah uang tidak valid.")
